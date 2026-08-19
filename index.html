@@ -1,0 +1,947 @@
+<title>智慧健康照護備課大綱</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@600;700;900&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    color-scheme: light;
+    --surface:     #f9f9f7;
+    --card:        #fcfcfb;
+    --ink:         #0b0b0b;
+    --ink-2:       #52514e;
+    --ink-muted:   #898781;
+    --hairline:    #e1e0d9;
+    --border:      rgba(11,11,11,0.10);
+    --accent-ring: #c23a3a;
+    --accent-bg:   #fbeceb;
+
+    --c1: #2a78d6; --c1-tint: #eaf1fb;
+    --c2: #d1592a; --c2-tint: #fbeee7;
+    --c3: #14966a; --c3-tint: #e7f5ef;
+    --c4: #b8860a; --c4-tint: #faf3df;
+    --c5: #c14a78; --c5-tint: #fbedf2;
+    --c6: #2f7a2f; --c6-tint: #edf5ec;
+    --c7: #5b4ea3; --c7-tint: #eeecf9;
+    --c8: #4d6b80; --c8-tint: #eaf0f3;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --surface:     #0d0d0d;
+      --card:        #1a1a19;
+      --ink:         #ffffff;
+      --ink-2:       #c3c2b7;
+      --ink-muted:   #898781;
+      --hairline:    #2c2c2a;
+      --border:      rgba(255,255,255,0.12);
+      --accent-ring: #e66767;
+      --accent-bg:   #2a1615;
+
+      --c1: #3987e5; --c1-tint: #14202f;
+      --c2: #d95926; --c2-tint: #2a1c10;
+      --c3: #199e70; --c3-tint: #0f2620;
+      --c4: #c98500; --c4-tint: #2a2110;
+      --c5: #d55181; --c5-tint: #2a151e;
+      --c6: #3fb53f; --c6-tint: #142616;
+      --c7: #9085e9; --c7-tint: #1c1930;
+      --c8: #8fa3b8; --c8-tint: #16222a;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --surface:     #0d0d0d;
+    --card:        #1a1a19;
+    --ink:         #ffffff;
+    --ink-2:       #c3c2b7;
+    --ink-muted:   #898781;
+    --hairline:    #2c2c2a;
+    --border:      rgba(255,255,255,0.12);
+    --accent-ring: #e66767;
+    --accent-bg:   #2a1615;
+
+    --c1: #3987e5; --c1-tint: #14202f;
+    --c2: #d95926; --c2-tint: #2a1c10;
+    --c3: #199e70; --c3-tint: #0f2620;
+    --c4: #c98500; --c4-tint: #2a2110;
+    --c5: #d55181; --c5-tint: #2a151e;
+    --c6: #3fb53f; --c6-tint: #142616;
+    --c7: #9085e9; --c7-tint: #1c1930;
+    --c8: #8fa3b8; --c8-tint: #16222a;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--surface);
+    color: var(--ink);
+    font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+  }
+  h1, h2, h3 { font-family: "Noto Serif TC", "Noto Sans TC", serif; }
+
+  a { color: inherit; }
+
+  #topbar {
+    position: sticky; top: 0; z-index: 20;
+    background: color-mix(in oklab, var(--card) 92%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--hairline);
+  }
+  .topbar-inner {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .brand { display: flex; flex-direction: column; gap: 1px; margin-right: 6px; }
+  .brand .name { font-size: 15px; font-weight: 900; font-family: "Noto Serif TC", serif; }
+  .brand .sub { font-size: 11px; color: var(--ink-muted); font-variant-numeric: tabular-nums; }
+
+  .search-wrap { position: relative; flex: 1 1 180px; min-width: 140px; max-width: 260px; }
+  .search-wrap input {
+    width: 100%;
+    padding: 7px 12px 7px 30px;
+    border-radius: 8px;
+    border: 1px solid var(--hairline);
+    background: var(--surface);
+    color: var(--ink);
+    font-family: inherit;
+    font-size: 13px;
+    outline: none;
+  }
+  .search-wrap input:focus { border-color: var(--c1); }
+  .search-wrap svg { position: absolute; left: 9px; top: 50%; transform: translateY(-50%); opacity: 0.5; pointer-events: none; }
+
+  .toolbtn {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 7px 12px; border-radius: 8px;
+    border: 1px solid var(--hairline);
+    background: var(--surface); color: var(--ink-2);
+    font-family: inherit; font-size: 12.5px; font-weight: 500;
+    cursor: pointer; white-space: nowrap;
+  }
+  .toolbtn:hover { border-color: var(--ink-muted); color: var(--ink); }
+  .toolbtn.active { background: var(--accent-bg); border-color: var(--accent-ring); color: var(--accent-ring); }
+
+  .jumpnav { display: flex; gap: 6px; flex-wrap: wrap; margin-left: auto; }
+  .jumpchip {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 5px 9px; border-radius: 999px;
+    border: 1px solid var(--hairline);
+    background: var(--surface);
+    font-family: inherit;
+    font-size: 11.5px; font-weight: 700;
+    text-decoration: none;
+    color: var(--ink-2);
+    white-space: nowrap;
+    cursor: pointer;
+  }
+  .jumpchip .dot { width: 8px; height: 8px; border-radius: 50%; flex: none; }
+  .jumpchip:hover { border-color: var(--ink-muted); color: var(--ink); }
+  .jumpchip.active { background: var(--ink); border-color: var(--ink); color: var(--card); }
+  .jumpchip.active .dot { outline: 2px solid var(--card); outline-offset: 1px; }
+
+  #page { max-width: 980px; margin: 0 auto; padding: 28px 24px 80px; }
+
+  .hero { margin-bottom: 26px; }
+  .hero .eyebrow {
+    font-size: 11.5px; font-weight: 700; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--ink-muted); margin-bottom: 8px;
+  }
+  .hero h1 { font-size: 26px; font-weight: 900; margin: 0 0 8px; line-height: 1.3; text-wrap: balance; }
+  .hero p { font-size: 14px; color: var(--ink-2); line-height: 1.8; max-width: 62ch; margin: 0; }
+
+  .plan-table {
+    margin-top: 22px;
+    border: 1px solid var(--hairline);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--card);
+  }
+  .plan-row {
+    display: grid;
+    grid-template-columns: 22px 1.4fr 62px 78px 62px 58px 78px;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border-top: 1px solid var(--hairline);
+    font-size: 12.5px;
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .plan-row:first-child { border-top: none; background: color-mix(in oklab, var(--ink) 4%, var(--card)); font-weight: 700; color: var(--ink-muted); font-size: 11px; letter-spacing: .03em; }
+  .plan-row:not(:first-child):hover { background: color-mix(in oklab, var(--ink) 3%, var(--card)); }
+  .plan-row .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .plan-row .name { font-weight: 700; }
+  .plan-row .num { font-variant-numeric: tabular-nums; text-align: right; color: var(--ink-2); }
+  .plan-row .hours-cell { font-weight: 700; color: var(--ink); }
+  .plan-row:first-child .hours-cell { font-weight: 700; color: var(--ink-muted); }
+  .weightbar { grid-column: 1 / -1; height: 6px; border-radius: 4px; background: var(--hairline); overflow: hidden; margin: 0 16px 12px; display: flex; }
+  .weightbar span { height: 100%; }
+
+  .hours-wrap {
+    display: flex; align-items: center; gap: 8px;
+    margin: 18px 0 -6px;
+    font-size: 12.5px; color: var(--ink-2);
+  }
+  .hours-wrap input {
+    width: 64px;
+    padding: 5px 8px;
+    border-radius: 7px;
+    border: 1px solid var(--hairline);
+    background: var(--card);
+    color: var(--ink);
+    font-family: inherit;
+    font-size: 12.5px;
+    font-variant-numeric: tabular-nums;
+  }
+  .hours-wrap input:focus { outline: none; border-color: var(--c1); }
+
+  .unit {
+    margin-top: 44px;
+    scroll-margin-top: 84px;
+  }
+  .unit-head {
+    display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+    padding-bottom: 14px; margin-bottom: 18px;
+    border-bottom: 3px solid var(--u-color);
+  }
+  .unit-head .idx {
+    font-family: "Noto Serif TC", serif;
+    font-size: 13px; font-weight: 700; color: var(--u-color);
+    border: 1.5px solid var(--u-color); border-radius: 50%;
+    width: 26px; height: 26px; display: flex; align-items: center; justify-content: center;
+    flex: none;
+  }
+  .unit-head h2 { font-size: 20px; font-weight: 900; margin: 0; flex: 1 1 auto; min-width: 200px; }
+  .unit-meta { font-size: 12px; color: var(--ink-muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .unit-copy {
+    border: 1px solid var(--hairline); background: var(--card); color: var(--ink-2);
+    border-radius: 7px; padding: 5px 10px; font-size: 11.5px; cursor: pointer; font-family: inherit;
+  }
+  .unit-copy:hover { border-color: var(--u-color); color: var(--u-color); }
+
+  .subgrid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  .unit.single .subgrid { grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 900px) { .unit.single .subgrid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 700px) { .subgrid, .unit.single .subgrid { grid-template-columns: 1fr; } }
+
+  .back-to-overview {
+    display: none;
+    align-items: center;
+    gap: 6px;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--ink-muted);
+    background: none;
+    border: none;
+    font-family: inherit;
+    cursor: pointer;
+    padding: 0 0 16px;
+  }
+  .back-to-overview:hover { color: var(--ink); }
+  body.tab-single .back-to-overview { display: inline-flex; }
+  body.tab-single #plan-table, body.tab-single .hero, body.tab-single .hours-wrap { display: none; }
+
+  .subcard {
+    background: var(--u-tint);
+    border: 1px solid color-mix(in oklab, var(--u-color) 30%, var(--hairline));
+    border-radius: 12px;
+    padding: 14px 16px;
+  }
+  .subcard h3 {
+    font-size: 13.5px; font-weight: 700; margin: 0 0 10px;
+    color: var(--ink);
+    font-family: "Noto Sans TC", sans-serif;
+  }
+  .subcard ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 7px; }
+  .subcard li { font-size: 12.5px; line-height: 1.6; color: var(--ink-2); }
+  .subcard li b { color: var(--ink); font-weight: 700; }
+  .subcard li .star { color: var(--accent-ring); margin-right: 2px; }
+  .subcard li.hot { background: var(--accent-bg); margin: 0 -8px; padding: 4px 8px; border-radius: 6px; }
+
+  .pt-row { position: relative; }
+  .subcard li.expandable { cursor: pointer; }
+  .subcard li.expandable:hover .pt-row { background: color-mix(in oklab, var(--u-color) 8%, transparent); }
+  .subcard li.expandable:focus-visible { outline: 2px solid var(--u-color); outline-offset: 2px; border-radius: 5px; }
+  .subcard li.expandable .pt-row {
+    padding: 2px 44px 2px 4px;
+    margin: -2px -4px;
+    border-radius: 6px;
+  }
+  .expand-mark {
+    position: absolute; right: 0; top: 50%;
+    transform: translateY(-50%);
+    display: inline-flex; align-items: center; gap: 3px;
+    color: var(--u-color);
+    background: color-mix(in oklab, var(--u-color) 14%, transparent);
+    border-radius: 999px;
+    padding: 1px 7px 1px 6px;
+    font-size: 10px;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .expand-mark .chev { display: inline-block; transition: transform 0.15s ease; }
+  .subcard li.expanded .expand-mark .chev { transform: rotate(180deg); }
+
+  .subcard li .sub-terms {
+    list-style: none;
+    margin: 8px 0 0;
+    padding: 8px 0 2px 12px;
+    border-left: 2px solid color-mix(in oklab, var(--u-color) 45%, var(--hairline));
+    display: none;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .subcard li.expanded .sub-terms { display: flex; }
+  .subcard .sub-terms li { font-size: 12px; color: var(--ink-2); cursor: default; }
+  .subcard .sub-terms li b { color: var(--u-color); font-weight: 700; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .expand-mark { transition: transform 0.15s ease; }
+  }
+
+  li.pt-dim { opacity: 0.28; }
+  li.pt-match { outline: 2px solid var(--c1); outline-offset: 2px; border-radius: 5px; }
+
+  #no-results { display: none; text-align: center; color: var(--ink-muted); font-size: 13px; padding: 60px 0; }
+
+  footer {
+    max-width: 980px; margin: 40px auto 0; padding: 20px 24px 40px;
+    border-top: 1px solid var(--hairline);
+    font-size: 11.5px; color: var(--ink-muted); line-height: 1.9;
+  }
+
+  @media print {
+    #topbar { position: static; }
+    .jumpnav, .search-wrap, #btn-hot, #btn-copyall, .unit-copy, #btn-expand-terms, .hours-wrap { display: none !important; }
+    .expand-mark { display: none !important; }
+    .subcard li .sub-terms { display: flex !important; }
+    body { background: #fff; color: #000; }
+    body.tab-single #plan-table, body.tab-single .hero, body.tab-single .hours-wrap { display: none; }
+  }
+</style>
+
+<div id="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <div class="name" id="brand-name">備課大綱</div>
+      <div class="sub" id="stat-line">載入中…</div>
+    </div>
+    <div class="search-wrap">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input id="search" type="text" placeholder="搜尋知識點、專有名詞…" autocomplete="off">
+    </div>
+    <button class="toolbtn" id="btn-hot">★ 只看易混淆重點</button>
+    <button class="toolbtn" id="btn-expand-terms">▾ 展開全部名詞說明</button>
+    <button class="toolbtn" id="btn-copyall">複製全部大綱</button>
+    <nav class="jumpnav" id="jumpnav"></nav>
+  </div>
+</div>
+
+<div id="page">
+  <button class="back-to-overview" id="btn-back">← 回總覽</button>
+  <div class="hero">
+    <div class="eyebrow" id="hero-eyebrow">備課參考</div>
+    <h1 id="hero-title">把題庫整理成可以直接拿去排課的大綱</h1>
+    <p id="hero-desc"></p>
+  </div>
+
+  <div class="hours-wrap">
+    <label for="hours-input">總授課時數</label>
+    <input type="number" id="hours-input" min="0" step="0.5" placeholder="例如 18">
+    <span>小時 → 下表自動換算各單元建議時數</span>
+  </div>
+  <div class="plan-table" id="plan-table"></div>
+
+  <div id="units"></div>
+  <div id="no-results">沒有符合「<span id="no-results-q"></span>」的知識點</div>
+
+  <footer id="page-footer"></footer>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var CONFIG = {
+    pageTitle: "智慧健康照護備課大綱",
+    courseName: "【EEC】智慧健康照護(114/115)",
+    courseCode: "HCA25",
+    heroTitle: null,
+    heroDesc: null,
+    sourceNote: "CSF 雲端練功坊「智慧健康照護」練習題庫"
+  };
+
+  var DATA = [
+    {
+      name: "健康照護物聯網概論", short: "物聯網概論", count: 43, key: "c1",
+      subtopics: [
+        { name: "Web與物聯網基礎架構", points: [
+          ["Web發展歷程", "Web1.0靜態單向發布；Web2.0雙向溝通、建立社會性網路；Web3.0多元化含AI技術、智能語意網、雲端分散儲存。", 1],
+          ["HTTP定義", "文件互聯網路，各種文件、圖片、影像可透過網際網路相互傳遞。", 0],
+          ["物聯網IoT全名", "Internet of Things；常見錯誤選項Interconnect of Teams／Internet of Taiwan／Interconnect of Things。", 1],
+          ["物聯網三層架構順序", "由下至上：感知層→網路層→應用層。", 1],
+          ["各層功能定位", "感知層透過感測辨識技術感知環境資訊；網路層/傳輸層是橋樑（如同人體神經系統負責傳遞資訊）；應用層提供各行業服務功能。", 0],
+          ["感知層技術範疇", "RFID技術、感應技術、嵌入式技術；雲端運算技術不屬於感知層技術。", 1],
+          ["人工智慧 AI 定義與應用", "Artificial Intelligence，讓電腦具有學習思考推理能力；應用含醫療/健康照護/虛擬助手/自動駕駛；案例如聊天機器人Woebot、Siri；常見錯誤縮寫陷阱「IA」（正確為AI）。", 1],
+          ["ZigBee通訊協定", "無線環境感測器（如農業抗旱防汛應用）利用其專屬的ZigBee通訊協定，將資料傳遞至聯網閘道器。", 0]
+        ]},
+        { name: "物聯網應用分類", points: [
+          ["物聯網四大應用類別", "智慧生活、智慧運輸、智慧醫療、智慧電網。", 1],
+          ["智慧電網時間電價應用", "尖峰用電較高電價、離峰較低電價，自動反應用電資訊給用戶。", 0],
+          ["AMI智慧型電表基礎建設", "Advanced Metering Infrastructure，含智慧型電表Smart meter、通信網路、電表資料管理系統MDMS三大部分。", 1],
+          ["智慧安全應用範疇判讀", "門禁指紋辨識、防盜監控、火災偵測系統皆屬之；一般市話撥打1999報案不算物聯網應用。", 0],
+          ["智慧商務應用判讀", "智慧穿衣鏡、RFID智慧冰箱記錄食品數量屬智慧商務，非智慧安全範疇。", 0],
+          ["農業物聯網考量方向", "生產履歷、水源乾淨程度、農藥使用、病蟲害問題；農民生活習慣不屬考量方向。", 0]
+        ]},
+        { name: "電子病歷相關縮寫辨析（核心易混淆）", points: [
+          ["四縮寫綜合對照", "CMR/EMR/EPR/EHR四個相似縮寫是本類別最核心的考點，考試常四選一辨析定義差異。", 1, [
+            ["CMR 病歷資料電腦化", "Computerized Medical Records，紙本病歷掃描數位化；優點為訊息共享、易儲存、資料完整性高，非轉換性高。"],
+            ["EMR 電子病歷", "Electronic Medical Records，僅將病歷改為可相容各系統的電子格式，不具協助醫師正確診斷的特性；限單一機構內部使用。"],
+            ["EPR 電子病患資料", "Electronic Patient Records，以病人為中心的病歷紀錄，目的是讓電子病歷互通於各醫療單位；優點是免重複檢測，缺點是各院格式不同難以實行。"],
+            ["EHR 電子健康資訊", "Electronic Health Records，除病歷資料外還整合病史、用藥、疫苗接種、過敏等個人健康資訊，能協助醫師做出更準確的診斷及決策。"]
+          ]]
+        ]},
+        { name: "穿戴式裝置與健康監測技術", points: [
+          ["智慧型手機內建感測器", "亮度感測器、三軸加速感測器、GPS皆內建；血氧濃度感測器需外加夾指裝置，手機不會內建。", 1],
+          ["藍芽 Bluetooth 特性", "易於連結、低功耗、裝置滲透率高；「高功耗」是常見錯誤選項。", 1],
+          ["穿戴式裝置應用", "心律血壓監測、智慧鞋墊測步數壓力、智慧眼鏡即時導覽。", 0],
+          ["三軸加速度計應用", "可推論老人跌倒、測道路平坦度；無法測距離與速度，需搭配超音波感測器等測距裝置。", 0],
+          ["眼壓感測器應用", "可檢測青光眼；無法檢測近視，這是常見錯誤選項。", 1]
+        ]},
+        { name: "統計診斷指標與臨床應用", points: [
+          ["假陽性率定義", "實際上無疾病症狀，但診斷結果顯示有疾病的機率；8%假陽性率＝8%健康人被檢測判定異常。", 1],
+          ["真陰性率／假陰性率／真陽性率", "與假陽性率同組四個統計診斷指標名詞，題目常四選一辨析。", 0],
+          ["急性顱內出血四種診斷", "硬腦膜上出血、硬腦膜下出血、蜘蛛網膜下出血、腦出血；「蜘蛛網膜上出血」「軟腦膜出血」是常見錯誤混淆選項。", 1],
+          ["物理治療服務範疇", "提供診斷、複查、檢查、評估、計畫、治療；服務對象為個人或群體，非僅個人。", 0]
+        ]},
+        { name: "健康照護體系與長期照護", points: [
+          ["WHO健康照護體系目的", "健康促進、保護民眾不受疾病危險因子入侵；疾病早期診斷與治療；建構長期照護體系如復健安寧療護；「樂齡學習、成功老化、在地老化」不屬於此三階段目的。", 1],
+          ["健康照護服務體系分類", "醫療服務體系涵蓋急性病患與出院需照護病人／長期照護服務體系／生活照護服務體系／居家服務體系。", 0],
+          ["ADL失能程度判定", "進食、移位、如廁、穿脫衣服4項無法自我完成之長期失能者，對應長期照顧十年計劃／長照2.0方案，非全民健保或老人安養方案。", 1],
+          ["行動式醫療三大優勢", "anytime任何時間、anywhere任何地點、anything任何裝置；「any method任何方法」是錯誤選項。", 0],
+          ["OWASP物聯網安全漏洞分類", "Open Web Application Security Project提出：不安全的數據傳輸和儲存／缺乏設備管理／使用不安全或過期的軟體元件／缺少安全的更新機制。", 1],
+          ["醫療物聯網 IoHT", "Internet of Health Things，串連人、數據、流程、關鍵技術，藉智能化整合發展以病患為中心之照護模式。", 0]
+        ]}
+      ]
+    },
+    {
+      name: "健康生活與物聯網應用", short: "健康生活", count: 65, key: "c2",
+      subtopics: [
+        { name: "高齡化與人口趨勢", points: [
+          ["WHO高齡分級定義", "65歲以上稱高齡者；高齡人口達總人口7%以上稱高齡化社會、14%稱高齡社會、20%稱超高齡社會。", 1],
+          ["台灣高齡化時程", "1993年成為高齡化社會、2018年轉為高齡社會、推估2026年邁入超高齡社會。", 1],
+          ["高齡化問題嚴重國家", "日本、義大利、德國；越南不屬此列，常當干擾選項。", 0],
+          ["平均餘命 Life Expectancy", "正式統計名詞，指新生嬰兒依當期各年齡組死亡風險推估的預期存活壽命；易與健康餘命、平均死亡年齡、可能餘命等詞混淆。", 1, [
+            ["平均餘命", "新生嬰兒依當期各年齡組死亡風險推估的預期存活壽命。"],
+            ["健康餘命 Healthy Life Expectancy", "預期能在健康狀態下存活的年數，扣除失能/患病時間。"],
+            ["平均死亡年齡 Mean Age at Death", "特定期間內死亡者的平均年齡，跟預期壽命概念不同。"],
+            ["可能餘命 Probable Lifetime", "另一種統計餘命概念，常與平均餘命混用當干擾選項。"]
+          ]]
+        ]},
+        { name: "生命歷程與健康狀態", points: [
+          ["生命健康歷程排序", "健康→亞健康→衰弱→失能/失智→重病/末期→臨終，順序常考排列題。", 1],
+          ["失能 Disabilities 定義", "身體或心智功能部分或全部喪失，致日常生活需他人協助。", 0],
+          ["健康促進定義", "WHO渥太華憲章1986年提出：使人們能夠增加對本身健康之控制並促進其健康之過程；核心手法為增能Empowerment；強調非僅衛生部門責任。", 1],
+          ["活躍老化 Active Aging", "WHO 2002年提出，從健康、參與、安全三大面向提升高齡者生活品質；前提不是「必須無任何疾病」。", 1],
+          ["生理徵象 Vital Signs", "四項：體溫、心率、呼吸率、血壓；血氧、脈搏率是常見干擾選項，不屬於四大生理徵象。", 1]
+        ]},
+        { name: "慢性病與健康數值判讀", points: [
+          ["三高定義", "高血壓、高血糖、高血脂，常與「高心率」混淆干擾。", 1],
+          ["糖尿病診斷標準", "空腹血糖≧126 mg/dl 屬一或二型糖尿病。", 0],
+          ["高血脂診斷標準", "總膽固醇≧200、三酸甘油脂≧200、低密度脂蛋白≧130 mg/dl。", 0],
+          ["血壓分期", "正常<120/<80；高血壓前期120-139/80-89；第一期140-159/90-99；第二期>160/>100 mmHg。", 1],
+          ["亞健康情境判讀", "三高數值落在邊緣值時屬於亞健康狀態，非疾病狀態。", 0]
+        ]},
+        { name: "穿戴式裝置與生醫感測技術", points: [
+          ["眼壓感測隱形眼鏡", "透過鏡片壓力感測裝置記錄角膜壓力與眼球液壓變化，用於檢測青光眼；不能調視力或修正老花。", 0],
+          ["低功耗藍牙 vs 傳統藍牙", "兩者精準度相同3m~15m；傳統藍牙傳輸距離10~100m，比低功耗藍牙20~40m遠——常考成相反方向的陷阱題。", 1, [
+            ["傳統藍牙", "傳輸距離10~100m，較低功耗藍牙遠。"],
+            ["低功耗藍牙 BLE", "傳輸距離20~40m；精準度與傳統藍牙相同（3m~15m）。"]
+          ]],
+          ["三軸加速度計", "偵測配戴者X/Y/Z三軸位置變化，用於判斷老人運動或跌倒狀態。", 0],
+          ["非接觸式測溫鏡", "利用LED光源投射人體表面，30公分內免接觸即可測體表溫度，避免病原體二次感染。", 0],
+          ["健康照護感測器辨識", "血壓感測器、三軸加速度計、心跳感測器屬之；電容感測器不屬於健康醫療照顧感測器，常當四選一陷阱。", 1],
+          ["心跳感測器接受度", "多為貼片式穿戴方便，接受度高，並非因尺寸龐大而接受度低。", 0]
+        ]},
+        { name: "物聯網系統架構與通訊技術", points: [
+          ["M2M", "Machine to Machine，物聯網系統需透過M2M訊息擷取與傳輸才能啟動整體系統。", 1],
+          ["問安系統四層架構", "實體層：智能地墊／感知層：壓力感測器／傳輸層：Wi-Fi、MQTT、閘道器、雲端資料庫／應用層：智慧型載具，四層對應常考錯位陷阱。", 1],
+          ["物聯網自動控制 vs 手動控制", "手機遠端手動關閉電風扇屬使用者手動控制，非物聯網自動控制行為。", 0],
+          ["無線傳輸血壓計支援通訊協定", "普遍支援紅外線、Bluetooth、Wi-Fi；智慧手機內建ZigBee並不普及，是易混淆的干擾選項。", 1],
+          ["MQTT／Arduino板技術流程", "生理監測系統情境：使用者在智慧載具透過M2M之MQTT發送測量指令給Arduino板，兩者是被單獨考的具體技術名詞。", 0]
+        ]},
+        { name: "物聯網健康照護應用情境判讀", points: [
+          ["雲端血糖照護計畫", "以電信業核心行動通訊技術串聯全國糖尿病照護中心，屬生理醫療應用。", 0],
+          ["運動裝備感測應用", "網球拍/棒球手套/壘包/足球/手環/球鞋內嵌感測器，收集分析運動資料，屬「運動管理」範疇物聯網應用。", 0],
+          ["高爾夫球桿車應用", "感應器+馬達+RFID識別，收集球桿回傳紀錄做運動量統計分析，同屬運動管理應用。", 0],
+          ["健康照護服務功能範疇", "隨身設備測量身體機能、數據上傳雲端平台、病例資訊一致性；「判斷藥物品質」屬醫療管理範疇，非健康照護服務功能。", 1],
+          ["銀髮族三大需求與供給端產業配對", "如許太太委託旅行社安排出遊，考「需求端的需求與供給端的產業」配對，正解為「休閒娛樂－服務產業」。", 0]
+        ]},
+        { name: "長期照顧與健康促進服務體系", points: [
+          ["長照2.0居家護理服務對象", "限居家失能或重病者，需專業護理師到府；僅需回診調藥或病情穩定者不符資格。", 1],
+          ["安寧照顧服務對象", "無法治癒之末期病患及其家屬，提供整體性照顧、解除疼痛與不適症狀。", 0],
+          ["社區預防延緩失能活動對象", "針對健康、亞健康、衰弱者，非失能/重病者。", 0],
+          ["出院準備服務", "協助即將出院病患經適當轉介服務，獲得完整持續性照顧。", 0],
+          ["健康促進產業價值鏈配對", "產品-運動保健器材；通路-網路購物；服務-舒壓課程；系統應對應舒壓課程一類服務而非營養保健品，常考配對錯置陷阱。", 1]
+        ]}
+      ]
+    },
+    {
+      name: "長期照顧服務與物聯網應用", short: "長照應用", count: 50, key: "c3",
+      subtopics: [
+        { name: "長照ABC分級與長照2.0政策架構", points: [
+          ["長照ABC三級服務中心", "A級社區整合型服務中心（長照旗艦店）每鄉鎮市區至少1個；B級複合型服務中心（長照專賣店）每國中學區至少1個；C級巷弄長照站（長照柑仔店）每3村里佈建1處。", 1, [
+            ["A級（長照旗艦店）", "社區整合型服務中心，每鄉鎮市區至少1個，提供3項以上長照服務、協調連結照顧資源。"],
+            ["B級（長照專賣店）", "複合型服務中心，每國中學區至少1個，至少提供2項長照服務、扶植C級單位。"],
+            ["C級（長照柑仔店）", "巷弄長照站，每3村里佈建1處，提供預防失能、短時數照顧/喘息服務、營養餐飲。"]
+          ]],
+          ["長照2.0三大照顧模式", "機構式、社區式、居家式；社區式介於居家與機構之間，如日間照護中心、家庭托顧。", 0],
+          ["長照1.0 vs 2.0服務對象擴大", "1.0：65歲以上老人、55歲以上山地原住民、身心障礙者、僅IADL失能且獨居老人四類；2.0新增：50歲以上失智症者、未滿50歲失能身心障礙者、65歲以上衰弱老人、55-64歲失能原住民。", 1],
+          ["喘息服務對象與條件", "未聘看護人員、輕中度失能或失智者、健康狀況穩定無傳染病無攻擊行為；已聘外籍看護者不可申請，長照需要等級二至八級者放寬不受30天空窗期限制。", 1],
+          ["長照2.0社區照顧模式項目", "日間照顧、社區復健、交通接送、餐飲服務、輔具服務、喘息服務等。", 0]
+        ]},
+        { name: "失能/失智功能評估量表", points: [
+          ["ADL日常生活活動功能", "Activities of Daily Living，含進食/移位/如廁/更衣/沐浴等；別名「巴氏量表」（Barthel ADL Index）；總分0-20完全依賴、21-60嚴重依賴、61-90中度依賴、91-99輕度依賴、100功能獨立。", 1],
+          ["IADL工具性日常生活活動功能", "Instrumental ADL，含理財、烹飪、購物、室外活動等維持獨立自主能力的活動。", 1],
+          ["長期照護需求三類評估依據", "ADL、IADL、認知功能Cognition function三者並列，慢性病本身不是評估依據。", 1],
+          ["認知功能評估量表", "簡短智能測驗MMSE、簡易心智狀態問卷SPMSQ。", 0],
+          ["CDR臨床失智評估量表", "Clinical Dementia Rating，分級CDR=0.5極輕度、CDR=1輕度、CDR=2中度、CDR=3重度。", 1],
+          ["SOF評估三項指標", "用於判斷工具性日常生活活動失能是否達長照服務對象標準的輔助評估。", 0]
+        ]},
+        { name: "長期照顧機構類型與收托對象", points: [
+          ["長期照顧型機構", "收容65歲以上有慢性病、長期醫療服務需求者，可服務留置3管（鼻胃管/導尿管/氣切管）患者，負責人非護理人員，每15床至少1位護理人員。", 1],
+          ["護理之家", "服務慢性病、長期護理需要或出院後護理需要患者，可服務有管路病患。", 0],
+          ["失智照顧型機構", "收容神經科/精神科專科醫師診斷失智症中度以上、具行動能力者。", 0],
+          ["安養型機構", "收容無重大疾病、生活可自理老人，無法行使醫療行為。", 0],
+          ["養護型機構", "收容無法自主生活但不需專門看護服務的65歲以上高齡者，可服務無管路或1-2管患者，不含氣切管。", 0],
+          ["四類機構收托條件辨析", "依疾病嚴重度、管路數量、護理需求層層區分，考題常給情境案例問「最適合哪種機構」。", 1]
+        ]},
+        { name: "物聯網智慧照護應用", points: [
+          ["智慧尿布/尿濕感測器", "感知層溫濕度感測器偵測濕度；傳輸層透過藍芽即時回傳手機；應用層使用者手機端得知使用情形及每日如廁次數尿量；優點是不直接接觸長者、保有尊嚴。", 1],
+          ["智慧床墊 Smart Mattress", "跌倒偵測、離床警示、預防褥瘡、生活作息與睡眠健康管理，不含「進食情形」偵測。", 1],
+          ["GPS定位器於失智症應用", "因定向感/記憶力缺乏易遊走走失，配戴GPS可遠端定位即時尋回，非用來「關在家中」或「減輕失智情形」。", 0],
+          ["智慧醫療設備穿戴適用性", "血壓計、三軸加速度計、聲波/氣體感測器適合裝在人身上；攝影機因隱私顧慮不適合裝在人身上。", 1],
+          ["物聯網三層架構判讀", "如人臉辨識道路監控協尋失智老人：感知層=辨識畫面、網路層=傳遞地理資訊、安全應用=防止老人遇危險。", 1],
+          ["居家護理排程平台", "電子化取代紙本行事曆、Google Map呈現訪視路線、定位服務、打卡機制；前端用「響應式網頁」跨平台，不含「增加紙本行事曆安排」這種錯誤選項。", 0],
+          ["Blind Shopping智能拐杖", "視障者購物結合智能拐杖及墨鏡，搭配POS系統完成支付。", 0],
+          ["電動輪椅智慧化功能", "加載電力輔助、可克服多種地形、可透過APP操控方向。", 0]
+        ]},
+        { name: "失智症與非藥物治療", points: [
+          ["失智症非藥物治療類型", "懷舊治療Reminiscence Therapy、音樂治療Music Therapy、寵物治療Animal-assisted Therapy、芳香療法Aroma Therapy、藝術治療Art Therapy；不含有氧運動訓練。", 1],
+          ["阿茲海默症與遺傳關聯", "Alzheimer's disease是失智症最常見類型，直系親屬患病者得病機率為一般人3-5倍，帶ApoE4基因型者風險3-4倍。", 0],
+          ["輕度失智症患者適合服務", "懷舊治療、認知促進訓練、GPS定位服務；語言治療與物理治療通常較少發生障礙的輕度階段尚不需要。", 0]
+        ]},
+        { name: "專業復健人員與科技輔具", points: [
+          ["三類復健專業人員分工", "PT物理治療師負責促進移動、減輕疼痛；OT職能治療師；ST語言治療師負責吞嚥障礙、言語障礙復健。", 1, [
+            ["PT 物理治療師", "Physical Therapist，負責促進移動能力、減輕疼痛。"],
+            ["OT 職能治療師", "Occupational Therapist，負責協助恢復日常生活功能與職能表現。"],
+            ["ST 語言治療師", "Speech Therapist，負責吞嚥障礙、言語障礙復健。"]
+          ]],
+          ["輔助科技 Assistive Technology", "改善身心障礙者在就醫/就學/就業/就養方面的設備、服務、策略和介入計劃，非僅指電子類輔具。", 1],
+          ["體感互動科技整合技術", "AR擴增實境、VR虛擬實境、MR混合實境、SR替代實境；無「Studio Reality」此類技術。", 1, [
+            ["AR 擴增實境", "在真實環境上疊加虛擬資訊。"],
+            ["VR 虛擬實境", "完全沉浸在虛擬環境中。"],
+            ["MR 混合實境", "虛擬與真實物件可即時互動融合。"],
+            ["SR 替代實境", "以虛擬內容替代部分真實體驗的技術。"]
+          ]],
+          ["科技輔具評估四方面", "對人、輔助科技、活動輸出、情境四方面做評估考量；使用需考慮便利性、複雜性、耐久性。", 0],
+          ["G-Sensor應用", "三軸加速度計，常用於開發居家復健動作平台。", 0],
+          ["物理治療所設置標準修正年份", "衛福部於2017年修正發布。", 0]
+        ]}
+      ]
+    },
+    {
+      name: "醫院管理與物聯網應用", short: "醫院管理", count: 42, key: "c4",
+      subtopics: [
+        { name: "醫療感測元件與穿戴裝置", points: [
+          ["常見醫療感測器", "血壓感測器、心跳感測器屬醫療感測；Google眼鏡、智慧藥盒本身不算生理感測器，常考複選題辨識。", 1],
+          ["生命體徵四項", "體溫、脈搏率/心率、呼吸率、血壓，四選一常考組合。", 1],
+          ["智慧藥盒運作技術", "透過紅外線、Bluetooth、RFID或Wi-Fi與微處理器交換資訊，無須裝置高成本長距離通訊技術LTE-A。", 1],
+          ["智慧藥盒最適合的無線通訊協定", "手機普遍具備Bluetooth/3G/Wi-Fi皆可接收提醒；ZigBee非手機標準配備，最不適合。", 0]
+        ]},
+        { name: "分級醫療與檢傷分類", points: [
+          ["分級醫療病床數與科別規定", "診所僅門診可簡易手術／地區醫院20-99床／區域醫院300床以上、含內外科病理科小兒科婦科麻醉科放射科／醫學中心500床以上，以教學研究創新醫療為任務。", 1],
+          ["分級醫療六大策略", "提升基層醫療量能、導引轉診就醫習慣、調高醫院重症支付標準減少輕症服務、強化醫院診所合作、提升民眾自我照護知能、加強醫療財團法人管理。", 0],
+          ["台灣急診檢傷五級分類", "復甦急救、危急、緊急、次緊急、非緊急；心跳停止大量失血屬第一級復甦急救。", 1]
+        ]},
+        { name: "醫療物聯網IoMT核心概念", points: [
+          ["IoMT定義", "有效串連人、數據、流程、關鍵技術智慧化整合，非「產品」。", 1],
+          ["閉環管理 Closed-loop Management", "正確訊息反饋＋決策控制＋循環流程自我超越，有效提高整體訊息水平和服務能力；藥物閉環管理可追蹤流程、控制醫療品質；「開環管理／智能管理／分散管理」為常見干擾選項。", 1],
+          ["智慧醫療三大類型", "居家健康照護、醫療感測、醫療管理；不含藥政管理。", 1],
+          ["行動醫療產業創新三層面", "疾病預警與預測、醫院與居家整合、無線網路傳輸（醫院大廳色調不相關為干擾項）。", 0]
+        ]},
+        { name: "定位與識別技術", points: [
+          ["RTLS即時定位系統", "三種主動式定位法：AOA到達角度定位法／TDOA到達時間差定位法／RSSI接收信號強度指示定位法。", 1, [
+            ["AOA", "Angle of Arrival，到達角度定位法，用角度＋三角測量定位。"],
+            ["TDOA", "Time Difference of Arrival，到達時間差定位法，用訊號到達不同基地台的時間差定位。"],
+            ["RSSI", "Received Signal Strength Indicator，依訊號強度定位。"]
+          ]],
+          ["RFID醫療應用", "監控血品履歷、內容資訊、溫度狀況，非使用者滿意度；用於醫療器材管理，目的是即時掌握位置省去搜尋時間，非防偷。", 1],
+          ["GIS不具身分識別功能", "地理資訊系統是空間數據分析工具，物聯網病患身分識別不會用到GIS，容易與EMR/RFID/HIS混淆。", 1]
+        ]},
+        { name: "遠距照護與數位健康服務", points: [
+          ["遠距照護Telecare服務項目", "遠距生理量測、遠距持續性照護、遠距即時辦門診、緊急護理諮詢、健康報告書。", 0],
+          ["台灣遠距醫療發展", "1995年起步，解決山地離島偏遠地區醫療資源不足；2007年衛福部推「遠距照護試辦計畫」；可追蹤病患出院後14天內再入院率，非30天，易考錯誤數字陷阱。", 1],
+          ["衛福部健康存摺", "可下載HTML/XML/JSON/影像格式，不含MPEG；網頁版資料比手機健保快易通App版多，App僅能查最近一次就醫紀錄。", 1],
+          ["全民健保行動快易通APP互動功能", "院所查詢、醫療快搜、健康存摺、eMask口罩預約、行動櫃檯、改革日記；「疾管家」是疾管署另外的LINE群組，非此APP功能，常考混淆。", 1],
+          ["健康照護整合包六大特色", "救護車到院前評估／居家健康量數值連結醫院／長照中心同步記錄／偏遠小鎮醫療巡檢／社區公眾場合量測／復康巴士健康量測。", 0]
+        ]},
+        { name: "醫院資訊系統與智慧管理應用", points: [
+          ["醫院資訊系統三類辨識", "HIS醫院資訊系統：涵蓋掛號批價醫囑藥局出入院等全院功能；RIS放射科資訊系統：整合HIS與PACS影像診斷；NIS護理資訊系統。", 1, [
+            ["HIS", "醫院資訊系統，涵蓋掛號、批價、醫囑、藥局、出入院等全院功能。"],
+            ["RIS", "放射科資訊系統，整合HIS與PACS影像診斷。"],
+            ["NIS", "護理資訊系統，支援護理站作業與紀錄。"]
+          ]],
+          ["智慧醫療管理服務", "診間報到、櫃台取票叫號、護理站電子白板、行動護理車、智能手術室；陪病家屬不能進手術室。", 0],
+          ["診間報到系統功能", "結合IC健保卡讀卡完成報到、電子白板同步叫號資訊、遲到者自動排序叫號；並非完全自動看診無須面對醫護人員。", 0],
+          ["醫療型機器人應用", "Medical robots重要應用是輔助手術及復健，非取代醫療人員；達文西機器手臂、外骨骼系統、接待機器人屬醫療型，戰鬥機器人不屬於。", 1]
+        ]},
+        { name: "醫療產業創新與資訊服務", points: [
+          ["美國醫療保健交流平台", "提供服務模式：合作、管理、分析、整合。", 0],
+          ["微創手術的好處", "侵害性小、血流減少、傷口較小、手術時間短。", 0],
+          ["衛生教育定義", "需評估整體民眾的健康需求，包括能瞭解社會上、心理上、教育上、社會經濟上、職業上與文化上的特質。", 0],
+          ["資訊能見度", "泛指資訊為使用者取得使用的程度。", 0]
+        ]}
+      ]
+    }
+  ];
+
+  document.getElementById("brand-name").textContent = CONFIG.pageTitle;
+  document.getElementById("hero-eyebrow").textContent = CONFIG.courseName + "・備課參考";
+
+  var totalQuestions = 0, totalSub = 0, totalLeaf = 0, totalHot = 0;
+  DATA.forEach(function (cat) {
+    totalQuestions += cat.count;
+    cat.subtopics.forEach(function (sub) {
+      totalSub++;
+      sub.points.forEach(function (p) { totalLeaf++; if (p[2]) totalHot++; });
+    });
+  });
+
+  document.getElementById("stat-line").textContent = DATA.length + "大類・" + totalSub + "子主題・共" + totalQuestions + "題";
+  document.getElementById("hero-title").textContent =
+    CONFIG.heroTitle || ("把 " + totalQuestions + " 題題庫，整理成可以直接拿去排課的大綱");
+  document.getElementById("hero-desc").textContent =
+    CONFIG.heroDesc || ("依 " + DATA.length + " 大類、" + totalSub + " 個子主題整理知識點，附建議授課比重，帶 ★ 的是題庫中特別容易混淆或高頻出現的重點，排課時可以多留一點時間。");
+  document.getElementById("page-footer").innerHTML =
+    "資料來源：" + escapeHtml(CONFIG.sourceNote) + "（" + escapeHtml(CONFIG.courseCode) + "）題目解析內容整理，共 " + totalQuestions + " 題。知識點文字為AI依題庫內容摘要整理，正式授課前建議對照原始題目複核。";
+
+  var jumpnav = document.getElementById("jumpnav");
+
+  var overviewChip = document.createElement("button");
+  overviewChip.type = "button";
+  overviewChip.className = "jumpchip";
+  overviewChip.setAttribute("data-tab", "overview");
+  overviewChip.textContent = "總覽";
+  jumpnav.appendChild(overviewChip);
+
+  DATA.forEach(function (cat, i) {
+    var a = document.createElement("button");
+    a.type = "button";
+    a.className = "jumpchip";
+    a.setAttribute("data-tab", String(i));
+    a.innerHTML = '<span class="dot" style="background:var(--' + cat.key + ')"></span>' + (i + 1) + ". " + escapeHtml(cat.short || cat.name);
+    jumpnav.appendChild(a);
+  });
+
+  var planTable = document.getElementById("plan-table");
+  var header = document.createElement("div");
+  header.className = "plan-row";
+  header.innerHTML = "<span></span><span>單元</span><span class='num'>題數</span><span class='num'>比重</span><span class='num'>子主題</span><span class='num'>重點★</span><span class='num'>建議時數</span>";
+  planTable.appendChild(header);
+
+  var hoursCells = [];
+
+  DATA.forEach(function (cat, i) {
+    var hotCount = 0, subCount = cat.subtopics.length;
+    cat.subtopics.forEach(function (s) { s.points.forEach(function (p) { if (p[2]) hotCount++; }); });
+    var fraction = totalQuestions ? cat.count / totalQuestions : 0;
+    var pct = Math.round(fraction * 100);
+
+    var row = document.createElement("a");
+    row.className = "plan-row";
+    row.href = "#unit-" + i;
+    row.setAttribute("data-tab", String(i));
+    row.innerHTML =
+      '<span class="dot" style="background:var(--' + cat.key + ')"></span>' +
+      '<span class="name">' + (i + 1) + ". " + escapeHtml(cat.name) + "</span>" +
+      '<span class="num">' + cat.count + "題</span>" +
+      '<span class="num">約 ' + pct + "%</span>" +
+      '<span class="num">' + subCount + "</span>" +
+      '<span class="num">' + hotCount + "</span>" +
+      '<span class="num hours-cell">—</span>';
+    planTable.appendChild(row);
+    hoursCells.push({ el: row.querySelector(".hours-cell"), fraction: fraction });
+
+    var bar = document.createElement("div");
+    bar.className = "weightbar";
+    bar.innerHTML = '<span style="width:' + pct + '%; background:var(--' + cat.key + ')"></span>';
+    planTable.appendChild(bar);
+  });
+
+  var hoursInput = document.getElementById("hours-input");
+  hoursInput.addEventListener("input", function () {
+    var total = parseFloat(hoursInput.value);
+    var valid = !isNaN(total) && total > 0;
+    if (!valid) {
+      hoursCells.forEach(function (c) { c.el.textContent = "—"; });
+      return;
+    }
+    var totalSlots = Math.max(0, Math.round(total * 2));
+    var raw = hoursCells.map(function (c) { return c.fraction * totalSlots; });
+    var base = raw.map(Math.floor);
+    var used = base.reduce(function (a, b) { return a + b; }, 0);
+    var remainder = totalSlots - used;
+    var order = raw
+      .map(function (v, i) { return { i: i, frac: v - base[i] }; })
+      .sort(function (a, b) { return b.frac - a.frac; });
+    for (var k = 0; k < remainder && k < order.length; k++) { base[order[k].i]++; }
+    hoursCells.forEach(function (c, i) { c.el.textContent = (base[i] * 0.5).toFixed(1) + "h"; });
+  });
+
+  var unitsEl = document.getElementById("units");
+  DATA.forEach(function (cat, ci) {
+    var section = document.createElement("section");
+    section.className = "unit";
+    section.id = "unit-" + ci;
+    section.style.setProperty("--u-color", "var(--" + cat.key + ")");
+    section.style.setProperty("--u-tint", "var(--" + cat.key + "-tint)");
+
+    var head = document.createElement("div");
+    head.className = "unit-head";
+    var subCount = cat.subtopics.length;
+    head.innerHTML =
+      '<span class="idx">' + (ci + 1) + "</span>" +
+      "<h2>" + escapeHtml(cat.name) + "</h2>" +
+      '<span class="unit-meta">' + cat.count + "題・" + subCount + "個子主題</span>" +
+      '<button class="unit-copy" data-ci="' + ci + '">複製本單元大綱</button>';
+    section.appendChild(head);
+
+    var grid = document.createElement("div");
+    grid.className = "subgrid";
+    cat.subtopics.forEach(function (sub) {
+      var card = document.createElement("div");
+      card.className = "subcard";
+      var h3 = document.createElement("h3");
+      h3.textContent = sub.name;
+      card.appendChild(h3);
+      var ul = document.createElement("ul");
+      sub.points.forEach(function (p) {
+        var terms = p[3];
+        var li = document.createElement("li");
+        li.className = "pt" + (p[2] ? " hot" : "") + (terms ? " expandable" : "");
+        var termsText = terms ? terms.map(function (t) { return t[0] + " " + t[1]; }).join(" ") : "";
+        li.setAttribute("data-text", (p[0] + " " + p[1] + " " + termsText).toLowerCase());
+        li.innerHTML =
+          '<div class="pt-row">' +
+          (p[2] ? '<span class="star">★</span>' : "") +
+          "<b>" + escapeHtml(p[0]) + "</b>　" + escapeHtml(p[1]) +
+          (terms ? '<span class="expand-mark" aria-hidden="true">展開<span class="chev">▾</span></span>' : "") +
+          "</div>";
+        if (terms) {
+          var sub2 = document.createElement("ul");
+          sub2.className = "sub-terms";
+          terms.forEach(function (t) {
+            var li2 = document.createElement("li");
+            li2.innerHTML = "<b>" + escapeHtml(t[0]) + "</b>　" + escapeHtml(t[1]);
+            sub2.appendChild(li2);
+          });
+          li.appendChild(sub2);
+          li.setAttribute("tabindex", "0");
+          li.setAttribute("role", "button");
+          li.setAttribute("aria-expanded", "false");
+          li.addEventListener("click", function () { toggleExpand(li); });
+          li.addEventListener("keydown", function (e) {
+            if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggleExpand(li); }
+          });
+        }
+        ul.appendChild(li);
+      });
+      card.appendChild(ul);
+      grid.appendChild(card);
+    });
+    section.appendChild(grid);
+    unitsEl.appendChild(section);
+  });
+
+  var currentTab = "overview";
+
+  function setActiveTab(tabId, opts) {
+    opts = opts || {};
+    currentTab = tabId;
+    var isOverview = tabId === "overview";
+
+    document.body.classList.toggle("tab-single", !isOverview);
+
+    DATA.forEach(function (cat, i) {
+      var el = document.getElementById("unit-" + i);
+      var show = isOverview || String(i) === String(tabId);
+      el.style.display = show ? "" : "none";
+      el.classList.toggle("single", !isOverview && show);
+    });
+
+    Array.prototype.forEach.call(jumpnav.querySelectorAll(".jumpchip"), function (chip) {
+      chip.classList.toggle("active", chip.getAttribute("data-tab") === String(tabId));
+    });
+
+    if (!opts.skipHash) {
+      history.replaceState(null, "", "#" + (isOverview ? "overview" : "unit-" + tabId));
+    }
+    applySearchFilter();
+    if (!opts.skipScroll) window.scrollTo({ top: 0, behavior: "auto" });
+  }
+
+  document.addEventListener("click", function (e) {
+    var tabEl = e.target.closest("[data-tab]");
+    if (tabEl) {
+      e.preventDefault();
+      setActiveTab(tabEl.getAttribute("data-tab"));
+    }
+  });
+
+  document.getElementById("btn-back").addEventListener("click", function () {
+    setActiveTab("overview");
+  });
+
+  function initTabFromHash() {
+    var h = location.hash.replace("#", "");
+    var m = h.match(/^unit-(\d+)$/);
+    if (m && DATA[parseInt(m[1], 10)]) {
+      setActiveTab(m[1], { skipHash: true, skipScroll: true });
+    } else {
+      setActiveTab("overview", { skipHash: true, skipScroll: true });
+    }
+  }
+
+  function toggleExpand(li) {
+    var isOpen = li.classList.toggle("expanded");
+    li.setAttribute("aria-expanded", isOpen ? "true" : "false");
+  }
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
+  function outlineText(ci) {
+    var cat = DATA[ci];
+    var lines = [cat.name + "（" + cat.count + "題）", ""];
+    cat.subtopics.forEach(function (sub) {
+      lines.push("■ " + sub.name);
+      sub.points.forEach(function (p) {
+        lines.push("　" + (p[2] ? "★ " : "・") + p[0] + "：" + p[1]);
+        if (p[3]) {
+          p[3].forEach(function (t) { lines.push("　　- " + t[0] + "：" + t[1]); });
+        }
+      });
+      lines.push("");
+    });
+    return lines.join("\n");
+  }
+  function copyText(text, btn) {
+    var done = function () {
+      var old = btn.textContent;
+      btn.textContent = "已複製 ✓";
+      setTimeout(function () { btn.textContent = old; }, 1600);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(done).catch(function () { fallbackCopy(text); done(); });
+    } else {
+      fallbackCopy(text); done();
+    }
+  }
+  function fallbackCopy(text) {
+    var ta = document.createElement("textarea");
+    ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); } catch (e) {}
+    document.body.removeChild(ta);
+  }
+
+  document.addEventListener("click", function (e) {
+    var btn = e.target.closest(".unit-copy");
+    if (btn) copyText(outlineText(parseInt(btn.getAttribute("data-ci"), 10)), btn);
+  });
+
+  document.getElementById("btn-copyall").addEventListener("click", function (e) {
+    var all = DATA.map(function (_, i) { return outlineText(i); }).join("\n");
+    copyText(CONFIG.courseName + "　備課大綱\n\n" + all, e.currentTarget);
+  });
+
+  var termsExpanded = false;
+  document.getElementById("btn-expand-terms").addEventListener("click", function (e) {
+    termsExpanded = !termsExpanded;
+    e.currentTarget.textContent = termsExpanded ? "▴ 收合全部名詞說明" : "▾ 展開全部名詞說明";
+    Array.prototype.forEach.call(document.querySelectorAll(".subcard li.expandable"), function (li) {
+      li.classList.toggle("expanded", termsExpanded);
+      li.classList.remove("auto-expanded");
+      li.setAttribute("aria-expanded", termsExpanded ? "true" : "false");
+    });
+  });
+
+  var hotOn = false;
+  document.getElementById("btn-hot").addEventListener("click", function (e) {
+    hotOn = !hotOn;
+    e.currentTarget.classList.toggle("active", hotOn);
+    Array.prototype.forEach.call(document.querySelectorAll(".subcard li"), function (li) {
+      li.classList.toggle("pt-dim", hotOn && !li.classList.contains("hot"));
+    });
+  });
+
+  var searchInput = document.getElementById("search");
+
+  function applySearchFilter() {
+    var q = searchInput.value.trim().toLowerCase();
+    var anyMatch = false;
+    var isOverview = currentTab === "overview";
+
+    DATA.forEach(function (cat, i) {
+      var unit = document.getElementById("unit-" + i);
+      var tabEligible = isOverview || String(i) === String(currentTab);
+      if (!tabEligible) return;
+
+      var unitHasMatch = false;
+      Array.prototype.forEach.call(unit.querySelectorAll(".subcard"), function (card) {
+        var cardHasMatch = false;
+        Array.prototype.forEach.call(card.querySelectorAll("li.pt"), function (li) {
+          var isMatch = q && li.getAttribute("data-text").indexOf(q) !== -1;
+          li.classList.toggle("pt-match", !!isMatch);
+          li.classList.toggle("pt-dim", !!q && !isMatch);
+          if (isMatch) {
+            cardHasMatch = true;
+            anyMatch = true;
+            if (li.classList.contains("expandable") && !li.classList.contains("expanded")) {
+              li.classList.add("expanded", "auto-expanded");
+              li.setAttribute("aria-expanded", "true");
+            }
+          } else if (li.classList.contains("auto-expanded")) {
+            li.classList.remove("expanded", "auto-expanded");
+            li.setAttribute("aria-expanded", "false");
+          }
+        });
+        card.style.display = (!q || cardHasMatch) ? "" : "none";
+        if (cardHasMatch) unitHasMatch = true;
+      });
+
+      if (isOverview) unit.style.display = (!q || unitHasMatch) ? "" : "none";
+    });
+
+    document.getElementById("no-results").style.display = (q && !anyMatch) ? "block" : "none";
+    document.getElementById("no-results-q").textContent = q;
+  }
+
+  searchInput.addEventListener("input", applySearchFilter);
+
+  initTabFromHash();
+})();
+</script>
